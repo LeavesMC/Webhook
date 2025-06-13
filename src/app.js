@@ -10,8 +10,8 @@ const app = express();
 app.use(express.json());
 
 app.post("/", async (req, res) => {
+  const PASSWORD = process.env.PASSWORD;
   if (PASSWORD) {
-    const PASSWORD = process.env.PASSWORD;
     const authHeader = req.headers["x-leavesmc-authorization"];
     if (!authHeader) {
       errlog("Auth", "Missing header.");
