@@ -1,4 +1,4 @@
-const port = 3000;
+const port = process.env.PORT || 32767;
 
 const { infolog, warnlog, errlog } = require("./logger");
 const { urlTest } = require("./urltest");
