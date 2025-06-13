@@ -1,0 +1,13 @@
+{
+  "name": "webhook",
+  "scripts": {
+    "serve": "node src/app.js",
+    "dev": "node --watch src/app.js"
+  },
+  "author": "LittleChest",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.828.0",
+    "express": "^5.1.0"
+  }
+}
