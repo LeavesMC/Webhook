@@ -63,11 +63,7 @@ app.post("/", async (req, res) => {
   const urlResult = await urlTest(url);
 
   if (urlResult.success) {
-    upload(
-      project,
-      `${githubTag}/${project}-${version}.jar`,
-      url
-    );
+      upload(project, githubTag, `${project}-${version}.jar`, url);
     return res.status(202).end();
   } else {
     return res.status(500).json({
