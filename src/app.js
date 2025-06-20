@@ -41,12 +41,18 @@ app.post("/", async (req, res) => {
     }
   }
 
-  const { repo, project, version, build, commit } = req.body;
+  const { repo, project, version, build, commit, tag } = req.body;
 
   let url = null;
+  let githubTag = null;
 
-  if (repo && project && version && build && commit) {
-    url = `https://github.com/${repo}/releases/download/${version}-${build}-${commit}/${project}-${version}.jar`;
+  if (repo && project && version && (tag || (build && commit))) {
+    if (tag) {
+      githubTag = tag;
+    } else {
+      githubTag = `${version}-${build}-${commit}`;
+    }
+    url = `https://github.com/${repo}/releases/download/${githubTag}/${project}-${version}.jar`;
   } else {
     errlog("HTTP", "Insufficient data received.");
     return res.status(400).json({
@@ -59,7 +65,7 @@ app.post("/", async (req, res) => {
   if (urlResult.success) {
     upload(
       project,
-      `${version}-${build}-${commit}/${project}-${version}.jar`,
+      `${githubTag}/${project}-${version}.jar`,
       url
     );
     return res.status(202).end();
