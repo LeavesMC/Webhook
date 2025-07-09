@@ -1,4 +1,4 @@
-import {logger} from "./log.ts";
+import {logger} from "./log";
 
 export async function withRetry<T>(
     fn: () => Promise<T>,

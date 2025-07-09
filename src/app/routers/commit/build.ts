@@ -1,10 +1,10 @@
-import router from "../../router.ts";
-import {logger} from "../../log.ts";
-import {withRetry} from "../../retry.ts";
-import {fetchArrayBuffer} from "../../fetch.ts";
-import {uploadBuildToS3} from "../../s3.ts";
-import {addDownloadSource} from "../../api.ts";
-import env from "../../env.ts";
+import router from "../../router";
+import {logger} from "../../log";
+import {withRetry} from "../../retry";
+import {fetchArrayBuffer} from "../../fetch";
+import {uploadBuildToS3} from "../../s3";
+import {addDownloadSource} from "../../api";
+import env from "../../env";
 
 router.on("/commit/build", async (request, response) => {
     const projectName = request.body.project;

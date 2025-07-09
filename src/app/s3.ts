@@ -1,6 +1,6 @@
 import {PutObjectCommand, S3Client} from "@aws-sdk/client-s3";
-import env from "./env.ts";
-import {logger} from "./log.ts";
+import env from "./env";
+import {logger} from "./log";
 
 const client = new S3Client({
     region: env.s3.region,
