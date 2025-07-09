@@ -4,6 +4,7 @@ import {withRetry} from "../../retry.ts";
 import {fetchArrayBuffer} from "../../fetch.ts";
 import {uploadBuildToS3} from "../../s3.ts";
 import {addDownloadSource} from "../../api.ts";
+import env from "../../env.ts";
 
 router.on("/commit/build", async (request, response) => {
     const projectName = request.body.project;
@@ -51,9 +52,9 @@ async function tryHandleRequest(
     tag: string
 ): Promise<void> {
     const fileName = `${projectName}-${versionName}.jar`;
-    const url = `${projectRepo}/releases/download/${tag}/${fileName}`;
+    const originUrl = `${projectRepo}/releases/download/${tag}/${fileName}`;
     const buffer = await withRetry(
-        () => fetchArrayBuffer(url),
+        () => fetchArrayBuffer(originUrl),
         `fetch build ${tag}`
     );
     const url = await withRetry(
