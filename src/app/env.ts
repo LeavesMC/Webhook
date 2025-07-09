@@ -5,6 +5,7 @@ import * as process from "node:process";
 config();
 
 const env = {
+    port: parseInt(process.env.PORT || "32767", 10),
     s3: {
         region: process.env.S3_REGION || "rainyun",
         endpoint: process.env.S3_ENDPOINT || "https://cn-nb1.rains3.com",

@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:http": "nodemon src/httpEntry.ts"
+    "dev:http": "nodemon src/httpEntry.ts",
+    "build": "tsc",
+    "start": "node dist/httpEntry.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.842.0",
