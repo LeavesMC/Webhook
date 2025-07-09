@@ -1,0 +1,23 @@
+{
+  "name": "webhook",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:http": "nodemon src/httpEntry.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.842.0",
+    "@vclight/router": "^1.5.2",
+    "dotenv": "^17.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "log4js": "^6.9.1",
+    "vclight": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.0.10",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
