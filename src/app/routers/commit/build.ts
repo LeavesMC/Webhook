@@ -52,7 +52,7 @@ async function tryHandleRequest(
     tag: string
 ): Promise<void> {
     const fileName = `${projectName}-${versionName}.jar`;
-    const originUrl = `${projectRepo}/releases/download/${projectName}-${tag}/${fileName}`;
+    const originUrl = `${projectRepo}/releases/download/${versionName}-${tag}/${fileName}`;
     const buffer = await withRetry(
         () => fetchArrayBuffer(originUrl),
         `fetch build ${tag}`
