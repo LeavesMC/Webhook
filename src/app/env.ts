@@ -15,7 +15,7 @@ const env = {
         },
     },
     downloadSource: {
-        domain: process.env.DOWNLOAD_SOURCE_DOMAIN || "https://cn-nb1.rains3.com",
+        domain: process.env.DOWNLOAD_SOURCE_DOMAIN || "cn-nb1.rains3.com",
         name: process.env.DOWNLOAD_SOURCE_NAME || "rainyun",
     },
     logLevel: process.env.LOG_LEVEL || "info",
