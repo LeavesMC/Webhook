@@ -1,14 +1,14 @@
 import env from "./env";
 
 export async function addDownloadSource(
-    projectName: string,
+    projectId: string,
     tag: string,
     url: string,
 ) {
     const authHeader = `Bearer ${env.api.token}`;
     const body = {
         download_source: env.downloadSource.name,
-        project: projectName,
+        project: projectId,
         tag,
         url,
     }

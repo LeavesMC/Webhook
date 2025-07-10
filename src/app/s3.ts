@@ -12,20 +12,20 @@ const client = new S3Client({
 });
 
 export async function uploadBuildToS3(
-    projectName: string,
+    projectId: string,
     tag: string,
     fileName: string,
     fileData: ArrayBuffer,
 ): Promise<string> {
     const path = `${tag}/${fileName}`;
     const uploadParams = {
-        Bucket: projectName,
+        Bucket: projectId,
         Key: path,
         Body: Buffer.from(fileData),
     };
 
-    logger.info(`Start uploading build ${projectName}/${tag} to S3`)
+    logger.info(`Start uploading build ${projectId}/${tag} to S3`)
     await client.send(new PutObjectCommand(uploadParams));
-    logger.info(`Build ${projectName}/${tag} uploaded successfully to S3 at ${path}`);
-    return `https://${projectName}.${env.downloadSource.domain}` + path;
+    logger.info(`Build ${projectId}/${tag} uploaded successfully to S3 at ${path}`);
+    return `https://${projectId}.${env.downloadSource.domain}` + path;
 }
