@@ -7,6 +7,16 @@ import {addDownloadSource} from "../../api";
 import env from "../../env";
 
 router.on("/commit/build", async (request, response) => {
+    const params = request.query["password"];
+    if (params !== env.password) {
+        response.status = 401;
+        response.response = {
+            code: 401,
+            error: "Unauthorized",
+        };
+        return;
+    }
+
     const projectName = request.body.project;
     const projectRepo = request.body.repository;
     const versionName = request.body.version;
