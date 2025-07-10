@@ -16,9 +16,12 @@ export async function addDownloadSource(
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            Authentication: authHeader,
+            Authorization: authHeader,
         },
         body: JSON.stringify(body),
     };
-    await fetch(`${env.api.baseUrl}/commit/build/download_source`, params);
+    const response = await fetch(`${env.api.baseUrl}/commit/build/download_source`, params);
+    if (!response.ok) {
+        throw new Error(`Failed to add download source: ${response.status} ${response.statusText}`);
+    }
 }
