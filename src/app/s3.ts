@@ -27,5 +27,5 @@ export async function uploadBuildToS3(
     logger.info(`Start uploading build ${projectId}/${tag} to S3`)
     await client.send(new PutObjectCommand(uploadParams));
     logger.info(`Build ${projectId}/${tag} uploaded successfully to S3 at ${path}`);
-    return `https://${projectId}.${env.downloadSource.domain}` + path;
+    return `https://${projectId}.${env.downloadSource.domain}/${path}`;
 }
