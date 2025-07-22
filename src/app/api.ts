@@ -16,7 +16,7 @@ export async function addDownloadSource(
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            Authorization: authHeader,
+            "Authorization": authHeader,
         },
         body: JSON.stringify(body),
     };
