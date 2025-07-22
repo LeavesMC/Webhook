@@ -22,6 +22,6 @@ export async function addDownloadSource(
     };
     const response = await fetch(`${env.api.baseUrl}/commit/build/download_source`, params);
     if (!response.ok) {
-        throw new Error(`Failed to add download source: ${response.status} ${response.statusText}`);
+        throw new Error(`Failed to add download source: ${response.status} ${response.statusText} ${await response.json()}`);
     }
 }
